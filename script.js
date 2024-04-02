@@ -31,9 +31,6 @@ let mainData=document.querySelector('.maindata');
 let options=document.querySelector('.options');
 let flag=0;
 let nutriflag=0;
-
-
-
 let result;
 let result2;
 let id;
@@ -41,8 +38,7 @@ let url2;
 
 let apiKeys=['52c8171ab83141b293a3b559f43e25f1','fccd9f91a89a45d8a52e4596856febee','cf0a888a78d043f687b3f2aab8efa401','93407a687685437e9649add219e60ed8', 'e1d0886b550948968d1624629a7b209e',' 2837bd4cda524fa2a91ca4d4a5df5036']
 let count=5;
-let apiKey='2837bd4cda524fa2a91ca4d4a5df5036';
-
+let apiKey='2837bd4cda524fa2a91ca4d4a5df5036'
 
 
 button.addEventListener('click',fetch);
@@ -84,24 +80,19 @@ async function fetch(){
                 id=results[index].id;
                 url2=(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${apiKey}`);
                 result2=await axios.get(url2);
-                console.log(result2);
                 setProperties(result2.data);
                 }catch(e){
-                    console.log("what the shit");
                 }
             }
             )})(i);                        //passing i to iife
         }
     }catch(e){
         console.log(e);
-   
         if(e.response.data.code===402){
             if(count===apiKeys.length)
               count=0;
             apiKey=apiKeys[count];
             count++;
-            console.log(count);
-            console.log(apiKey);
         }
         console.log("error occurred");
     }
@@ -135,7 +126,6 @@ switchRecipe.addEventListener('click',()=>{
     switchInfo.classList.remove('optionsFocus');
     switchNutri.classList.remove('optionsFocus');
     details.innerHTML='';
-    console.log(result2);
     properties.classList.add('none');
     details.classList.remove('none');
     details.classList.remove('nutriDiv')
@@ -143,8 +133,6 @@ switchRecipe.addEventListener('click',()=>{
     summaryContainer.classList.add('none');
     for(let i=0;i<result2.data.analyzedInstructions.length;i++){
        
-
-        
         for(let j=0;j<result2.data.analyzedInstructions[i].steps.length;j++){
             let h4=document.createElement('h4');
             h4.classList.add('steps');
@@ -162,10 +150,8 @@ switchRecipe.addEventListener('click',()=>{
             h4.innerText=`${result2.data.analyzedInstructions[i].steps[j].number}`;
             console.log(result2.data.analyzedInstructions[i].steps[i].number);
             description.innerHTML=`<b>${result2.data.analyzedInstructions[i].steps[j].step}</b>`;
-            console.log(result2.data.analyzedInstructions[i].steps[i].step);
             for(let k=0;k<result2.data.analyzedInstructions[i].steps[j].equipment.length;k++){
             text+=`${result2.data.analyzedInstructions[i].steps[j].equipment[k].name}, `;
-            console.log(text);
             }
             for(let k=0;k<result2.data.analyzedInstructions[i].steps[j].ingredients.length;k++)
             textingr+=`${result2.data.analyzedInstructions[i].steps[j].ingredients[k].name}, `;
