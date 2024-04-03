@@ -332,8 +332,8 @@ a{
     }
     .switch{
         position: absolute;
-        top: 15rem;
-        background-color: black;
+        top: 13rem;
+        background-color: #D2D4C8;
         right: 0rem;
         width: 100%;
     }

@@ -170,7 +170,7 @@ switchRecipe.addEventListener('click',()=>{
     mainData.style='padding-top:0px';
 });
 document.addEventListener('click',(event)=>{
-    if (event.srcElement.classList[0]!=='recipe'&&event.srcElement.classList[0]!=='maindata'&&event.srcElement.classList[0]!=='recipeSteps'&&event.srcElement.offsetParent.classList[0]!=='recipeSteps'){
+    if (event.srcElement.classList[0]!=='recipe'&&event.srcElement.classList[0]!=='maindata'&&event.srcElement.classList[0]!=='recipeSteps'&&event.srcElement.classList[0]!=='recing'&&event.srcElement.offsetParent.classList[0]!=='recipeSteps'){
         console.log(event.srcElement.offsetParent.classList[0]=='recipeSteps');
         mainData.style='padding=top:5rem';
     }
